@@ -6,14 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Product {
+public class FunctionFAP {
 	private Long id;
 	private String name;
 	private String brand;
 	private String madein;
 	private float price;
 
-	protected Product() {
+	protected FunctionFAP() {
 	}
 
 	@Id

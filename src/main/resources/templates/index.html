@@ -3,7 +3,7 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
-<title>Product Manager</title>
+<title>FunctionFAP Manager</title>
 </head>
 <body>
 <div align="center">	
@@ -13,34 +13,28 @@
 		<input type="submit" value="Logout" />
 	</form>
 	
-	<h1>Product Manager</h1>
-	<a href="new">Create New Product</a>
+	<h1>FunctionFAP Manager</h1>
+	<a href="new">Create new option FAP</a>
 	
 	<br/><br/>
 	<table border="1" cellpadding="10">
 		<thead>
 			<tr>
-				<th>Product ID</th>
+				<th>NO</th>
 				<th>Name</th>
-				<th>Brand</th>
-				<th>Made In</th>
-				<th>Price</th>
 				
 				<th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>				
 				
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="product : ${listProducts}">
-				<td th:text="${product.id}">Product ID</td>
-				<td th:text="${product.name}">Name</td>
-				<td th:text="${product.brand}">Brand</td>
-				<td th:text="${product.madein}">Made in</td>
-				<td th:text="${product.price}">Price</td>
+			<tr th:each="FunctionFAP : ${listFunctionFAPs}">
+				<td th:text="${FunctionFAP.id}">TÊN CH?C N?NG</td>
+				<td th:text="${FunctionFAP.name}">Name</td>
 				<td sec:authorize="hasRole('ROLE_ADMIN')">
-					<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+					<a th:href="@{'/edit/' + ${FunctionFAP.id}}">Edit</a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+					<a th:href="@{'/delete/' + ${FunctionFAP.id}}">Delete</a>
 				</td>
 			</tr>
 		</tbody>

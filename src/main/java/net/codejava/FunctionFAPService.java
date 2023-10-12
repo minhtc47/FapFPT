@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductService {
+public class FunctionFAPService {
 	@Autowired
-	private ProductRepository repo;
+	private FunctionFAPRepository repo;
 	
-	public List<Product> listAll() {		
+	public List<FunctionFAP> listAll() {		
 		return repo.findAll();
 	}
 	
-	public void save(Product product) {
-		repo.save(product);
+	public void save(FunctionFAP FunctionFAP) {
+		repo.save(FunctionFAP);
 	}
 	
-	public Product get(Long id) {
+	public FunctionFAP get(Long id) {
 		return repo.findById(id).get();
 	}
 	

@@ -14,43 +14,43 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AppController {
 	@Autowired
-	private ProductService service;
+	private FunctionFAPService service;
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
-		List<Product> listProducts = service.listAll();
-		model.addAttribute("listProducts", listProducts);
+		List<FunctionFAP> listFunctionFAPs = service.listAll();
+		model.addAttribute("listFunctionFAPs", listFunctionFAPs);
 		
 		return "index";
 	}
 	
 	@RequestMapping("/new")
-	public String showNewProductForm(Model model) {
-		Product product = new Product();
-		model.addAttribute("product", product);
+	public String showNewFunctionFAPForm(Model model) {
+		FunctionFAP FunctionFAP = new FunctionFAP();
+		model.addAttribute("FunctionFAP", FunctionFAP);
 		
-		return "new_product";
+		return "new_FunctionFAP";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("product") Product product) {
-		service.save(product);
+	public String saveFunctionFAP(@ModelAttribute("FunctionFAP") FunctionFAP FunctionFAP) {
+		service.save(FunctionFAP);
 		
 		return "redirect:/";
 	}
 	
 	@RequestMapping("/edit/{id}")
-	public ModelAndView showEditProductForm(@PathVariable(name = "id") Long id) {
-		ModelAndView mav = new ModelAndView("edit_product");
+	public ModelAndView showEditFunctionFAPForm(@PathVariable(name = "id") Long id) {
+		ModelAndView mav = new ModelAndView("edit_FunctionFAP");
 		
-		Product product = service.get(id);
-		mav.addObject("product", product);
+		FunctionFAP FunctionFAP = service.get(id);
+		mav.addObject("FunctionFAP", FunctionFAP);
 		
 		return mav;
 	}	
 	
 	@RequestMapping("/delete/{id}")
-	public String deleteProduct(@PathVariable(name = "id") Long id) {
+	public String deleteFunctionFAP(@PathVariable(name = "id") Long id) {
 		service.delete(id);
 		
 		return "redirect:/";
