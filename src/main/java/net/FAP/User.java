@@ -1,4 +1,4 @@
-package net.codejava;
+package net.FAP;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

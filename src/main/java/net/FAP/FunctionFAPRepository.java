@@ -1,4 +1,4 @@
-package net.codejava;
+package net.FAP;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
