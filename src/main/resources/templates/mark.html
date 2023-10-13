@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+    <head>
+        <title>Mark Report</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .tooltip {
+                position: relative;
+                display: inline-block;
+                border-bottom: 1px dotted black;
+            }
+
+            .tooltip .tooltiptext {
+                visibility: hidden;
+                width: 120px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+
+                /* Position the tooltip */
+                position: absolute;
+                z-index: 1;
+            }
+
+            .tooltip:hover .tooltiptext {
+                visibility: visible;
+            }
+        </style>
+    </head>
+
+    <body style="text-align:center;">
+
+        <h2>Mark Report</h2>
+
+        <p th:text="${student.id}"></p>
+        <p th:text="${student.student_name}"></p>
+        
+
+        <div th:each="mark : ${markList}">
+            <div class="tooltip" th:inline="text">[[${mark.subject.subject_name}]]
+                <span class="tooltiptext" th:inline="text">
+                    Assignment 1: [[${mark.as1}]]<br>
+                    Assignment 2: [[${mark.as2}]]<br>
+                    Progress test 1: [[${mark.pt1}]]<br>
+                    Progress test 2: [[${mark.pt2}]]<br>
+                    Practical Exam: [[${mark.pe}]]<br>
+                    Final Exam: [[${mark.fe}]]<br>
+                </span>
+                <br>
+            </div>
+            <br>
+        </div>
+        <br>
+
+
+    </body>
+</html>

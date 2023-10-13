@@ -15,7 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class AppController {
 	@Autowired
 	private FunctionFAPService service;
-	
+	@Autowired
+        private StudentDetailsService st;
+        @Autowired
+        private MarkReportDetailsService mr;
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
 		List<FunctionFAP> listFunctionFAPs = service.listAll();
@@ -55,4 +58,13 @@ public class AppController {
 		
 		return "redirect:/";
 	}
+                @RequestMapping("/student/{id}/mark")
+        public ModelAndView timetable(@PathVariable(name = "id") Long id){
+            Student student = st.getStudent(id);
+            List<MarkReport> markList = (List<MarkReport>) mr.findByStudentId(student.getId());
+            ModelAndView mv = new ModelAndView("mark");
+            mv.addObject("student", student);
+            mv.addObject("markList", markList);
+            return mv;
+        }
 }
